@@ -42,7 +42,6 @@
                 <version>2.6.0</version>
                 <configuration>
                     <licenseName>mit</licenseName>
-                    <licenseResolver>file://${project.parent.basedir}/license</licenseResolver>
                     <organizationName>${project.artifactId}</organizationName>
                 </configuration>
                 <executions>
