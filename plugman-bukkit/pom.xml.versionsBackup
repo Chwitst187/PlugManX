@@ -11,11 +11,11 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>plugman-paper</artifactId>
+    <artifactId>plugman-bukkit</artifactId>
     <packaging>jar</packaging>
 
-    <name>PlugMan-Paper</name>
-    <description>Paper functionality for PlugManX</description>
+    <name>PlugMan-Bukkit</name>
+    <description>Bukkit functionality for PlugManX</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -23,8 +23,8 @@
 
     <pluginRepositories>
         <pluginRepository>
-            <id>bytecode.space</id>
-            <url>https://repo.bytecode.space/repository/maven-public/</url>
+            <id>MineBench</id>
+            <url>https://repo.minebench.de/</url>
         </pluginRepository>
     </pluginRepositories>
 
@@ -68,42 +68,20 @@
                     <target>21</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>ca.bkaw</groupId>
-                <artifactId>paper-nms-maven-plugin</artifactId>
-                <version>1.4.10</version>
-                <executions>
-                    <execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>remap</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
 
     <dependencies>
-        <!-- Dependency on plugman-bukkit (this is the key requirement) -->
         <dependency>
             <groupId>com.rylinaux</groupId>
-            <artifactId>plugman-bukkit</artifactId>
+            <artifactId>plugman-core</artifactId>
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Paper-specific dependencies -->
         <dependency>
-            <groupId>io.papermc.paper</groupId>
-            <artifactId>paper-api</artifactId>
-            <version>26.1.2.build.61-stable</version>
-            <scope>provided</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>ca.bkaw</groupId>
-            <artifactId>paper-nms</artifactId>
-            <version>1.21.8-SNAPSHOT</version>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.21.7-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -113,13 +91,11 @@
             <version>0.5.1</version>
             <scope>compile</scope>
         </dependency>
-
-        <!-- Testing dependencies -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
-            <version>6.0.3</version>
-            <scope>test</scope>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>26.0.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>
