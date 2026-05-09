@@ -56,6 +56,7 @@ public class PlugManConfig {
     @JsonProperty("showPaperWarning")
     private boolean showPaperWarning = true;
 
+
     @Data
     public static class GenericLoadConfig {
         @JsonProperty("enabled")
