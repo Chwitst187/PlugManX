@@ -27,6 +27,7 @@ package velocity.com.rylinaux.plugman.messaging;
  */
 
 import core.com.rylinaux.plugman.messaging.ColorFormatter;
+import core.com.rylinaux.plugman.util.StringUtil;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 
 /**
@@ -39,9 +40,10 @@ public class VelocityColorFormatter implements ColorFormatter {
 
     @Override
     public String translateAlternateColorCodes(char altColorChar, String textToTranslate) {
+        var normalized = StringUtil.convertMiniMessageToLegacy(textToTranslate, altColorChar);
         // Use Adventure's legacy serializer to handle color codes
         var component = LegacyComponentSerializer.legacyAmpersand().deserialize(
-            textToTranslate.replace(altColorChar, '&')
+            normalized.replace(altColorChar, '&')
         );
         return LegacyComponentSerializer.legacySection().serialize(component);
     }

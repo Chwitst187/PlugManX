@@ -27,6 +27,7 @@ package bungee.com.rylinaux.plugman.messaging;
  */
 
 import core.com.rylinaux.plugman.messaging.ColorFormatter;
+import core.com.rylinaux.plugman.util.StringUtil;
 import net.md_5.bungee.api.ChatColor;
 
 /**
@@ -39,6 +40,7 @@ public class BungeeColorFormatter implements ColorFormatter {
 
     @Override
     public String translateAlternateColorCodes(char altColorChar, String textToTranslate) {
-        return ChatColor.translateAlternateColorCodes(altColorChar, textToTranslate);
+        var normalized = StringUtil.convertMiniMessageToLegacy(textToTranslate, altColorChar);
+        return ChatColor.translateAlternateColorCodes(altColorChar, normalized);
     }
 }
