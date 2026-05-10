@@ -27,7 +27,6 @@ package bukkit.com.rylinaux.plugman.messaging;
  */
 
 import core.com.rylinaux.plugman.messaging.ColorFormatter;
-import org.bukkit.ChatColor;
 
 /**
  * Bukkit implementation of ColorFormatter.
@@ -39,6 +38,6 @@ public class BukkitColorFormatter implements ColorFormatter {
 
     @Override
     public String translateAlternateColorCodes(char altColorChar, String textToTranslate) {
-        return ChatColor.translateAlternateColorCodes(altColorChar, textToTranslate);
+        return textToTranslate;
     }
 }
