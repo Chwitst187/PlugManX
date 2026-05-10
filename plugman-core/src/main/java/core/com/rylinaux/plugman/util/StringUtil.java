@@ -30,6 +30,9 @@ import com.google.common.base.Preconditions;
 import lombok.experimental.UtilityClass;
 
 import java.util.Collection;
+import java.util.Locale;
+import java.util.Map;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -40,6 +43,23 @@ import java.util.stream.Stream;
  */
 @UtilityClass
 public class StringUtil {
+
+    private static final Pattern HEX_PATTERN = Pattern.compile("(?i)<#([0-9a-f]{6})>");
+    private static final Pattern CLOSING_TAG_PATTERN = Pattern.compile("(?i)</(bold|b|italic|i|underlined|u|strikethrough|st|obfuscated|obf)>");
+    private static final Pattern OPENING_TAG_PATTERN = Pattern.compile("(?i)<(bold|b|italic|i|underlined|u|strikethrough|st|obfuscated|obf|reset)>");
+    private static final Map<String, Character> LEGACY_TAG_CODES = Map.ofEntries(
+        Map.entry("bold", 'l'),
+        Map.entry("b", 'l'),
+        Map.entry("italic", 'o'),
+        Map.entry("i", 'o'),
+        Map.entry("underlined", 'n'),
+        Map.entry("u", 'n'),
+        Map.entry("strikethrough", 'm'),
+        Map.entry("st", 'm'),
+        Map.entry("obfuscated", 'k'),
+        Map.entry("obf", 'k'),
+        Map.entry("reset", 'r')
+    );
 
     /**
      * Returns an array of Strings as a single String.
@@ -70,5 +90,25 @@ public class StringUtil {
     public static boolean startsWithIgnoreCase(String string, String prefix) throws IllegalArgumentException, NullPointerException {
         Preconditions.checkArgument(string != null, "Cannot check a null string for a match");
         return string.length() >= prefix.length() && string.regionMatches(true, 0, prefix, 0, prefix.length());
+    }
+
+    public static String convertMiniMessageToLegacy(String input, char colorChar) {
+        if (input == null) return null;
+
+        var withHex = HEX_PATTERN.matcher(input).replaceAll(match -> {
+            var hex = match.group(1);
+            var builder = new StringBuilder().append(colorChar).append('x');
+            for (char c : hex.toCharArray()) {
+                builder.append(colorChar).append(c);
+            }
+            return builder.toString();
+        });
+
+        var withoutClosing = CLOSING_TAG_PATTERN.matcher(withHex).replaceAll(String.valueOf(colorChar) + 'r');
+
+        return OPENING_TAG_PATTERN.matcher(withoutClosing).replaceAll(match -> {
+            var code = LEGACY_TAG_CODES.get(match.group(1).toLowerCase(Locale.ROOT));
+            return code == null ? match.group() : String.valueOf(colorChar) + code;
+        });
     }
 }
