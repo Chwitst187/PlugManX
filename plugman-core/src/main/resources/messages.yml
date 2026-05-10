@@ -6,7 +6,7 @@
 # With new updates, this is subject to change and previous versions might not display information properly. Changes will be noted in the changelog.
 ###
 
-prefix: '<#FF85C2>&lCHERRY <#555555>» '
+prefix: '<#FF85C2><bold>CHERRY <#555555>» '
 check:
   header: '<#FFFFFF>Retrieving plugin versions...'
   not-found: '<#FFFFFF>Plugin not installed - latest available version is "{0}".'
