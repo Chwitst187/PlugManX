@@ -27,6 +27,8 @@ package bukkit.com.rylinaux.plugman.messaging;
  */
 
 import core.com.rylinaux.plugman.messaging.ColorFormatter;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.bukkit.ChatColor;
 
 /**
@@ -37,9 +39,14 @@ import org.bukkit.ChatColor;
  */
 public class BukkitColorFormatter implements ColorFormatter {
 
+    private static final MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
+    private static final LegacyComponentSerializer LEGACY_SERIALIZER = LegacyComponentSerializer.legacySection();
+
     @Override
     public String translateAlternateColorCodes(char altColorChar, String textToTranslate) {
         if (textToTranslate == null) return null;
-        return ChatColor.translateAlternateColorCodes(altColorChar, textToTranslate);
+
+        var legacyColored = ChatColor.translateAlternateColorCodes(altColorChar, textToTranslate);
+        return LEGACY_SERIALIZER.serialize(MINI_MESSAGE.deserialize(legacyColored));
     }
 }

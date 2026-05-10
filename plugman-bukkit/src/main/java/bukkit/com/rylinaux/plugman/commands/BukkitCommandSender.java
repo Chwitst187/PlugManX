@@ -2,13 +2,10 @@ package bukkit.com.rylinaux.plugman.commands;
 
 import bukkit.com.rylinaux.plugman.PlugManBukkit;
 import core.com.rylinaux.plugman.commands.CommandSender;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
 
 
 public record BukkitCommandSender(org.bukkit.command.CommandSender bukkitSender) implements CommandSender {
-    private static final MiniMessage MINI_MESSAGE = MiniMessage.miniMessage();
-
     @Override
     public void sendMessage(String message) {
         sendMessage(true, message, new Object[0]);
@@ -27,7 +24,7 @@ public record BukkitCommandSender(org.bukkit.command.CommandSender bukkitSender)
     @Override
     public void sendMessage(boolean prefix, String message, Object... args) {
         message = PlugManBukkit.getInstance().getMessageFormatter().formatMessage(prefix, message, args);
-        bukkitSender.sendMessage(String.valueOf(MINI_MESSAGE.deserialize(String.format(message, args))));
+        bukkitSender.sendMessage(String.format(message, args));
     }
 
     @Override
