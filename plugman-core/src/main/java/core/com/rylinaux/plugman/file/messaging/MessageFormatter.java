@@ -32,6 +32,7 @@ import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 import java.nio.file.Path;
+import java.util.regex.Pattern;
 
 /**
  * Manages custom messages.
@@ -41,6 +42,8 @@ import java.nio.file.Path;
 @Getter
 @RequiredArgsConstructor
 public class MessageFormatter {
+    private static final Pattern MINI_HEX_PATTERN = Pattern.compile("<#[A-Fa-f0-9]{6}>");
+
     private final MessageFile messageFile;
     private final ColorFormatter colorFormatter;
 
@@ -81,7 +84,7 @@ public class MessageFormatter {
         var message = prefix? messageFile.getString("prefix") + rawMessage : rawMessage;
 
         for (var i = 0; i < args.length; i++) message = message.replace("{" + i + "}", String.valueOf(args[i]));
-        return colorFormatter.translateAlternateColorCodes('&', message);
+        return colorFormatter.translateAlternateColorCodes('&', convertMiniMessageHexToLegacyAmpersand(message));
     }
 
     /**
@@ -91,6 +94,21 @@ public class MessageFormatter {
      * @return the message with the prefix.
      */
     public String prefix(String msg) {
-        return colorFormatter.translateAlternateColorCodes('&', messageFile.getString("prefix") + msg);
+        return colorFormatter.translateAlternateColorCodes('&', convertMiniMessageHexToLegacyAmpersand(messageFile.getString("prefix") + msg));
+    }
+
+    private static String convertMiniMessageHexToLegacyAmpersand(String message) {
+        var matcher = MINI_HEX_PATTERN.matcher(message);
+        var result = new StringBuilder();
+
+        while (matcher.find()) {
+            var hex = matcher.group().substring(2, 8);
+            var replacement = new StringBuilder("&x");
+            for (var i = 0; i < hex.length(); i++) replacement.append('&').append(hex.charAt(i));
+            matcher.appendReplacement(result, replacement.toString());
+        }
+
+        matcher.appendTail(result);
+        return result.toString();
     }
 }
