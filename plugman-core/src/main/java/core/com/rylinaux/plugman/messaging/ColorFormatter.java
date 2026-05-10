@@ -24,7 +24,9 @@ package core.com.rylinaux.plugman.messaging;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  * #L%
- */
+*/
+
+import core.com.rylinaux.plugman.util.StringUtil;
 
 /**
  * Platform-agnostic interface for color code formatting.
@@ -33,6 +35,19 @@ package core.com.rylinaux.plugman.messaging;
  * @author rylinaux
  */
 public interface ColorFormatter {
+
+    /**
+     * Convert MiniMessage-like tags to legacy color code patterns and then
+     * translate alternate color codes.
+     *
+     * @param altColorChar the alternate color code character (e.g., '&')
+     * @param textToTranslate the text containing MiniMessage and/or legacy codes
+     * @return the formatted text with color codes translated
+     */
+    default String translateColorCodes(char altColorChar, String textToTranslate) {
+        var normalized = StringUtil.convertMiniMessageToLegacy(textToTranslate, altColorChar);
+        return translateAlternateColorCodes(altColorChar, normalized);
+    }
 
     /**
      * Translate alternate color codes in a message
