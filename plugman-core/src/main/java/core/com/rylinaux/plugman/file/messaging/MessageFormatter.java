@@ -81,7 +81,7 @@ public class MessageFormatter {
         var message = prefix? messageFile.getString("prefix") + rawMessage : rawMessage;
 
         for (var i = 0; i < args.length; i++) message = message.replace("{" + i + "}", String.valueOf(args[i]));
-        return colorFormatter.translateAlternateColorCodes('&', message);
+        return colorFormatter.translateColorCodes('&', message);
     }
 
     /**
@@ -91,6 +91,6 @@ public class MessageFormatter {
      * @return the message with the prefix.
      */
     public String prefix(String msg) {
-        return colorFormatter.translateAlternateColorCodes('&', messageFile.getString("prefix") + msg);
+        return colorFormatter.translateColorCodes('&', messageFile.getString("prefix") + msg);
     }
 }
