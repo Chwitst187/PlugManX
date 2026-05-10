@@ -26,6 +26,8 @@ package core.com.rylinaux.plugman.messaging;
  * #L%
 */
 
+import core.com.rylinaux.plugman.util.StringUtil;
+
 /**
  * Platform-agnostic interface for color code formatting.
  * This abstracts the underlying color formatting system (Bukkit, Bungee, etc.)
