@@ -21,15 +21,15 @@ check:
   not-available: '<#FF4444>Version information for {0} is unavailable.'
 disable:
   all: '<#FFFFFF>All plugins have been disabled (excluding PlugMan).'
-  already-disabled: '<#FF4444>{0} is already disabled.'
-  disabled: '<#FFFFFF>{0} has been disabled.'
+  already-disabled: '<#FF4444><#6BF18D>{0}<#FF4444> is already disabled.'
+  disabled: '<#6BF18D>{0}<#FFFFFF> has been disabled.'
 dump:
   dumped: '<#FFFFFF>Plugins dumped to {0}.'
   error: '<#FF4444>Could not dump to file.'
 enable:
   all: '<#FFFFFF>All plugins have been enabled.'
-  already-enabled: '<#FF4444>{0} is already enabled.'
-  enabled: '<#FFFFFF>{0} has been enabled.'
+  already-enabled: '<#FF4444><#6BF18D>{0}<#FF4444> is already enabled.'
+  enabled: '<#6BF18D>{0}<#FFFFFF> has been enabled.'
 error:
   ignored: '<#FF4444>PlugMan is configured to ignore that plugin.'
   invalid-plugin: '<#FF4444>That is not a valid plugin.'
@@ -57,35 +57,35 @@ help:
   unload: '<#AAAAAA>- <#6BF18D>/{0} unload <plugin> <#FFFFFF>- <#AAAAAA>Unload a plugin.'
   check: '<#AAAAAA>- <#6BF18D>/{0} check <plugin|all> [-f] <#FFFFFF>- <#AAAAAA>Check if a plugin is up-to-date (-f dumps to file for all).'
 info:
-  header: 'Plugin Information: {0}'
+  header: 'Plugin Information: <#6BF18D>{0}'
   version: '<#AAAAAA>- Version: <#6BF18D>{0}'
   authors: '<#AAAAAA>- Author(s): <#6BF18D>{0}'
-  status: '<#AAAAAA>- Status: {0}'
-  depends: '<#AAAAAA>- Depends: {0}'
+  status: '<#AAAAAA>- Status: <#6BF18D>{0}'
+  depends: '<#AAAAAA>- Depends: <#6BF18D>{0}'
   softdepends: '<#AAAAAA>- SoftDepends: <#6BF18D>{0}'
 list:
-  list: '<#FFFFFF>Plugins ({0}): {1}'
+  list: '<#FFFFFF>Plugins ({0}): <#6BF18D>{1}'
 load:
-  already-loaded: '<#FF4444>{0} is already loaded.'
+  already-loaded: '<#FF4444><#6BF18D>{0}<#FF4444> is already loaded.'
   cannot-find: '<#FF4444>Could not find file and failed to search descriptions.'
   invalid-description: '<#FF4444>That plugin has an invalid description.'
   invalid-plugin: '<#FF4444>That file is not a valid plugin.'
-  loaded: '<#FFFFFF>{0} has been loaded and enabled.'
+  loaded: '<#6BF18D>{0}<#FFFFFF> has been loaded and enabled.'
   plugin-dir: '<#FF4444>Plugin directory not found.'
 lookup:
-  found: '<#FFFFFF>/{0} is registered to {1}.'
+  found: '<#FFFFFF>/{0} is registered to <#6BF18D>{1}<#FFFFFF>.'
   not-found: '<#FF4444>Command "/{0}" not registered in any plugin.yml'
 reload:
   all: '<#FFFFFF>All plugins have been reloaded.'
-  all-failed: '<#FF4444>Some plugins failed to reload: {0}'
-  reloaded: '<#FFFFFF>{0} has been reloaded.'
+  all-failed: '<#FF4444>Some plugins failed to reload: <#6BF18D>{0}'
+  reloaded: '<#6BF18D>{0}<#FFFFFF> has been reloaded.'
 restart:
   all: '<#FFFFFF>All plugins have been restarted.'
-  restarted: '<#FFFFFF>{0} has been restarted.'
+  restarted: '<#6BF18D>{0}<#FFFFFF> has been restarted.'
 unload:
-  failed: '<#FF4444>Failed to unload {0}.'
+  failed: '<#FF4444>Failed to unload <#6BF18D>{0}<#FF4444>.'
   gentle-failed: '<#FF4444>Plugin refused to unload.'
-  unloaded: '<#FFFFFF>{0} has been unloaded.'
+  unloaded: '<#6BF18D>{0}<#FFFFFF> has been unloaded.'
 usage:
   usage: '<#FFFFFF>Commands: <#AAAAAA>{0}'
   no-commands: '<#FF4444>No commands registered.'
