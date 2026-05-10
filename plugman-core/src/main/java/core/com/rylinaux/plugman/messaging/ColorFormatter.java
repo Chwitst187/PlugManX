@@ -24,7 +24,7 @@ package core.com.rylinaux.plugman.messaging;
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  * #L%
- */
+*/
 
 /**
  * Platform-agnostic interface for color code formatting.
