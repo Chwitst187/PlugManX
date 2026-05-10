@@ -40,6 +40,8 @@ public class VelocityColorFormatter implements ColorFormatter {
 
     @Override
     public String translateAlternateColorCodes(char altColorChar, String textToTranslate) {
+        if (textToTranslate == null) return null;
+
         var normalized = StringUtil.convertMiniMessageToLegacy(textToTranslate, altColorChar);
         // Use Adventure's legacy serializer to handle color codes
         var component = LegacyComponentSerializer.legacyAmpersand().deserialize(

@@ -40,6 +40,8 @@ public class BungeeColorFormatter implements ColorFormatter {
 
     @Override
     public String translateAlternateColorCodes(char altColorChar, String textToTranslate) {
+        if (textToTranslate == null) return null;
+
         var normalized = StringUtil.convertMiniMessageToLegacy(textToTranslate, altColorChar);
         return ChatColor.translateAlternateColorCodes(altColorChar, normalized);
     }
