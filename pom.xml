@@ -59,7 +59,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <plugman.version>3.0.5</plugman.version>
         <manifold.version>2025.1.31</manifold.version>
-        <jackson.version>2.13.5</jackson.version>
+        <jackson.version>2.21.3</jackson.version>
     </properties>
 
     <build>
