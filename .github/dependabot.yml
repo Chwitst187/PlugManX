@@ -7,11 +7,12 @@ version: 2
 
 updates:
   - package-ecosystem: "maven"
-    directory: "/"
+    directories:
+      - "/"
+      - "/*"
     schedule:
       interval: "daily"
       time: "03:00"
       timezone: "Europe/Berlin"
-
     commit-message:
       prefix: "deps"
