@@ -64,14 +64,13 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.15.0</version>
                 <configuration>
-                    <source>25</source>
-                    <target>25</target>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>ca.bkaw</groupId>
                 <artifactId>paper-nms-maven-plugin</artifactId>
-                <version>1.4.10</version>
+                <version>1.4.11-SNAPSHOT</version>
                 <executions>
                     <execution>
                         <phase>process-classes</phase>
@@ -103,7 +102,7 @@
         <dependency>
             <groupId>ca.bkaw</groupId>
             <artifactId>paper-nms</artifactId>
-            <version>1.21.8-SNAPSHOT</version>
+            <version>26.1.2.build.64-stable-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 

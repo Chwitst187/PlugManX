@@ -58,6 +58,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <plugman.version>3.0.5</plugman.version>
+        <java.version>21</java.version>
         <manifold.version>2026.1.6</manifold.version>
         <jackson.version>2.21.3</jackson.version>
     </properties>
@@ -69,8 +70,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.15.0</version>
                 <configuration>
-                    <source>25</source>
-                    <target>25</target>
+                    <release>${java.version}</release>
                     <encoding>UTF-8</encoding>
                     <!-- Add the processor path for the plugin -->
                     <annotationProcessorPaths>
