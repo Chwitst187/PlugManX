@@ -60,7 +60,7 @@
         <plugman.version>3.0.5</plugman.version>
         <java.version>21</java.version>
         <manifold.version>2026.1.6</manifold.version>
-        <jackson.version>2.21.3</jackson.version>
+        <jackson.version>2.22.1</jackson.version>
     </properties>
 
     <build>
